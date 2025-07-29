@@ -1,8 +1,8 @@
 package config
 
 import (
-	"log"
 	"os"
+	"strconv"
 
 	"gopkg.in/yaml.v2"
 )
@@ -19,6 +19,11 @@ type DatabaseConfig struct {
 	User     string `yaml:"user"`
 	Password string `yaml:"password"`
 	Name     string `yaml:"name"`
+}
+
+func (c DatabaseConfig) GetDSN() string {
+	return "host=" + c.Host + " user=" + c.User + " password=" + c.Password +
+		" dbname=" + c.Name + " port=" + strconv.Itoa(c.Port) + " sslmode=disable TimeZone=Asia/Shanghai"
 }
 
 type JWTConfig struct {

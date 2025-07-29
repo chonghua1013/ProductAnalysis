@@ -1,9 +1,9 @@
 package main
 
 import (
+	"github.com/chonghua1013/ProductAnalysis/internal/config"
+	"github.com/chonghua1013/ProductAnalysis/internal/routes"
 	"log"
-	"project-name/internal/config"
-	"project-name/internal/routes"
 )
 
 func main() {

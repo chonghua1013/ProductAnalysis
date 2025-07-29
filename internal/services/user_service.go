@@ -1,8 +1,8 @@
 package services
 
 import (
-	"project-name/internal/models"
-	"project-name/internal/repositories"
+	"github.com/chonghua1013/ProductAnalysis/internal/models"
+	"github.com/chonghua1013/ProductAnalysis/internal/repositories"
 )
 
 type UserService interface {
