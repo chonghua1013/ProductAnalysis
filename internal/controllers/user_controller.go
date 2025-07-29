@@ -3,9 +3,9 @@ package controllers
 import (
 	"net/http"
 
-	"project-name/internal/models"
-	"project-name/internal/services"
-	"project-name/internal/utils"
+	"github.com/chonghua1013/ProductAnalysis/internal/models"
+	"github.com/chonghua1013/ProductAnalysis/internal/services"
+	"github.com/chonghua1013/ProductAnalysis/internal/utils"
 
 	"github.com/gin-gonic/gin"
 )

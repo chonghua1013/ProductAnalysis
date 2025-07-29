@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	"project-name/internal/models"
-	"project-name/pkg/database"
+	"github.com/chonghua1013/ProductAnalysis/internal/models"
+	_ "github.com/chonghua1013/ProductAnalysis/pkg/database"
 
 	"gorm.io/gorm"
 )
