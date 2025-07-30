@@ -10,6 +10,7 @@ import (
 type UserRepository interface {
 	FindAll() ([]models.User, error)
 	FindByID(id string) (*models.User, error)
+	FindByEmail(email string) (*models.User, error) // 添加这行
 	Create(user *models.User) (*models.User, error)
 	Update(id string, user *models.User) (*models.User, error)
 	Delete(id string) error
@@ -55,4 +56,12 @@ func (r *userRepository) Update(id string, user *models.User) (*models.User, err
 
 func (r *userRepository) Delete(id string) error {
 	return r.db.Where("id = ?", id).Delete(&models.User{}).Error
+}
+
+func (r *userRepository) FindByEmail(email string) (*models.User, error) {
+	var user models.User
+	if err := r.db.Where("email = ?", email).First(&user).Error; err != nil {
+		return nil, err
+	}
+	return &user, nil
 }
