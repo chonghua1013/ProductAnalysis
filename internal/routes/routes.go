@@ -24,6 +24,7 @@ func SetupRouter(cfg *config.Config) *gin.Engine {
 	userRepo := repositories.NewUserRepository(db)
 	userService := services.NewUserService(userRepo)
 	userController := controllers.NewUserController(userService)
+	authController := controllers.NewAuthController(userService, cfg.JWT.Secret)
 
 	// 全局中间件
 	router.Use(middleware.Logger())
@@ -32,8 +33,8 @@ func SetupRouter(cfg *config.Config) *gin.Engine {
 	// 公共路由
 	public := router.Group("/api")
 	{
-		public.POST("/login", controllers.Login)
-		public.POST("/register", controllers.Register)
+		public.POST("/login", authController.Login)
+		public.POST("/register", authController.Register)
 	}
 
 	// 需要认证的路由

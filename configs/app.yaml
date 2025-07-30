@@ -4,8 +4,8 @@ db:
   host: "localhost"
   port: 5432
   user: "postgres"
-  password: "postgres"
-  name: "mydb"
+  password: "root"
+  name: "pas"
 
 jwt:
   secret: "your-secret-key"

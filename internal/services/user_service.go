@@ -8,6 +8,7 @@ import (
 type UserService interface {
 	GetAllUsers() ([]models.User, error)
 	GetUserByID(id string) (*models.User, error)
+	GetUserByEmail(email string) (*models.User, error) // 添加这行
 	CreateUser(user *models.User) (*models.User, error)
 	UpdateUser(id string, user *models.User) (*models.User, error)
 	DeleteUser(id string) error
@@ -15,6 +16,14 @@ type UserService interface {
 
 type userService struct {
 	userRepo repositories.UserRepository
+}
+
+func (s *userService) GetUserByEmail(email string) (*models.User, error) {
+	user, err := s.userRepo.FindByEmail(email)
+	if err != nil {
+		return nil, err
+	}
+	return user, nil
 }
 
 func NewUserService(userRepo repositories.UserRepository) UserService {
