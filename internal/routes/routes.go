@@ -15,7 +15,7 @@ func SetupRouter(cfg *config.Config) *gin.Engine {
 	router := gin.Default()
 
 	// 初始化依赖
-	db, err := database.NewPostgresDB(cfg.DB)
+	db, err := database.NewMySQLDB(cfg.DB)
 	if err != nil {
 		panic("failed to connect database")
 	}
@@ -39,13 +39,13 @@ func SetupRouter(cfg *config.Config) *gin.Engine {
 
 	// 需要认证的路由
 	protected := router.Group("/api")
-	protected.Use(middleware.JWTAuth(cfg.JWT.Secret))
-	{
-		protected.GET("/users", userController.GetUsers)
-		protected.GET("/users/:id", userController.GetUser)
-		protected.PUT("/users/:id", userController.UpdateUser)
-		protected.DELETE("/users/:id", userController.DeleteUser)
-	}
+	//protected.Use(middleware.JWTAuth(cfg.JWT.Secret))
+	//{
+	protected.GET("/users", userController.GetUsers)
+	protected.GET("/users/:id", userController.GetUser)
+	protected.PUT("/users/:id", userController.UpdateUser)
+	protected.DELETE("/users/:id", userController.DeleteUser)
+	//}
 
 	return router
 }

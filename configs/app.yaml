@@ -1,12 +1,22 @@
 server_address: ":8080"
 
-db:
-  host: "localhost"
-  port: 5432
-  user: "postgres"
-  password: "root"
-  name: "pas"
+#db:
+#  host: "localhost"
+#  port: 5432
+#  user: "postgres"
+#  password: "root"
+#  name: "pas"
 
 jwt:
   secret: "your-secret-key"
   expire: 24
+
+db:
+  host: "127.0.0.1"
+  port: 3306
+  user: "root"
+  password: "root"
+  name: "product_analysis"
+  charset: "utf8mb4"
+  parseTime: true
+  loc: "Local"

@@ -12,12 +12,24 @@ type Config struct {
 	JWT           JWTConfig
 }
 
+//type DatabaseConfig struct {
+//	Host     string `yaml:"host"`
+//	Port     int    `yaml:"port"`
+//	User     string `yaml:"user"`
+//	Password string `yaml:"password"`
+//	Name     string `yaml:"name"`
+//}
+
 type DatabaseConfig struct {
 	Host     string `yaml:"host"`
 	Port     int    `yaml:"port"`
 	User     string `yaml:"user"`
 	Password string `yaml:"password"`
 	Name     string `yaml:"name"`
+	// MySQL特有参数
+	Charset   string `yaml:"charset"`   // 默认utf8mb4
+	ParseTime bool   `yaml:"parseTime"` // 是否解析时间
+	Loc       string `yaml:"loc"`       // 时区
 }
 
 type JWTConfig struct {
